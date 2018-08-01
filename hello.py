@@ -3,10 +3,12 @@ import click
 @click.command()
 @click.option('--verbose', is_flag=True, help="Will print verbose messages.")
 @click.option('--name', multiple=True, default='', help='Who are you?')
-def cli(verbose, name):
+@click.password_option()
+def cli(verbose, name, password):
     """This is an example script to learn Click."""
     if verbose:
         click.echo("We are in the verbose mode.")
     click.echo("Hello World")
     for n in name:
         click.echo('Bye {0}'.format(n))
+    click.echo('We received {0} as password. (I print password for testing purposes. :) )'.format(password))
